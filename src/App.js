@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import { Login } from './Login';
+import { Register } from './Register';
+import { Home } from './Home';
 
 function App() {
+  const [currentForm, setCurrentForm] = useState('login');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const authToken = localStorage.getItem('authToken');
+    if (authToken) {
+      console.log('authToken', authToken);
+      setIsLoggedIn(true);
+    }
+  }, []);
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('authToken');
+    setIsLoggedIn(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App"> 
+      {
+        isLoggedIn ? <Home onLoginSwitch={() => handleLogout()} onFormSwitch={toggleForm}/> :
+        currentForm === 'login' ? <Login onFormSwitch={toggleForm} onLoginSwitch={() => setIsLoggedIn(true)}/> : <Register onFormSwitch={toggleForm} onLoginSwitch={() => setIsLoggedIn(true)}/>
+      }
     </div>
   );
 }
