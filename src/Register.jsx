@@ -1,5 +1,7 @@
 import React, {useState} from "react";
-
+import { GoogleLoginButton  } from "react-social-login-buttons";
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 export const Register = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -40,12 +42,16 @@ export const Register = (props) => {
                 <input required value={email} onChange = {(e) => setEmail(e.target.value)} type="email" placeholder="Email" name="email" id="email"/>
                 <label htmlFor="password">Password</label>
                 <input required value={password} onChange = {(e) => setPassword(e.target.value)} type="password" placeholder="Password" name="password" id="password"/>    
-                <button type="submit">Register</button>
+                {/* <button type="submit">Register</button> */}
+                <br />
+                <Button variant="success" type="submit">
+                  Register
+                </Button>
                 <div className="signup__google">
-                    <button onClick={handleGoogleSignUp}>Sign Up with Google</button>
+                    <GoogleLoginButton onClick={handleGoogleSignUp}> Sign Up with Google </GoogleLoginButton>
                 </div>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already Registered ? Login</button>
+            <Button variant="primary" onClick={() => props.onFormSwitch('login')}>Already Registered? Login</Button>{' '}
         </div>
     )
 }

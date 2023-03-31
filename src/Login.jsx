@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleLoginButton  } from "react-social-login-buttons";
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -53,14 +56,18 @@ export const Login = (props) => {
                 <input required value={email} onChange = {(e) => setEmail(e.target.value)} type="email" placeholder="Email" name="email" id="email"/>
                 <label htmlFor="password">Password</label>
                 <input required value={password} onChange = {(e) => setPassword(e.target.value)} type="password" placeholder="Password" name="password" id="password"/>    
-                <button type="submit">Log In</button>
+                <br />
+                <Button variant="success" type="submit">
+                  Log In
+                </Button>
                 <div className="login__google">
-                    <button onClick={handleGoogleSignIn}>Sign In with Google</button>
+                    <GoogleLoginButton onClick={handleGoogleSignIn} />
                 </div>
             </form>
             
 
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>No Account Sign Up</button>
+            {/* <button className="link-btn" onClick={() => props.onFormSwitch('register')}>No Account Sign Up</button> */}
+            <Button variant="primary" onClick={() => props.onFormSwitch('register')}>No Account? Register</Button>{' '}
       </div>
     )
 }
