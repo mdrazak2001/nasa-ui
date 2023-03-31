@@ -17,16 +17,17 @@ export const Register = (props) => {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
+            const authToken = data.token; // assuming the token is returned in the 'token' field
+            localStorage.setItem('authToken', authToken); // store the token in local storage
+            props.onLoginSwitch();
             // handle success or error response
           })
           .catch((error) => {
-            console.error('Error:', error);
+            console.error('User with same email already exists');
           });
       };
     const handleGoogleSignUp = (e) => {
-      e.preventDefault();
-      console.log("hello");
-        
+      window.location.href = "http://localhost:5000/auth/google/register";
     };
 
     return (
@@ -34,11 +35,11 @@ export const Register = (props) => {
             <form className="register-form" onSubmit = {handleSubmit}>
                 <h2>Register</h2>
                 <label htmlFor="name">Name</label>
-                <input value={name} onChange = {(e) => setName(e.target.value)} type="text" placeholder="Name" name="name" id="name"/>
+                <input required value={name} onChange = {(e) => setName(e.target.value)} type="text" placeholder="Name" name="name" id="name"/>
                 <label htmlFor="email">Email</label>
-                <input value={email} onChange = {(e) => setEmail(e.target.value)} type="email" placeholder="Email" name="email" id="email"/>
+                <input required value={email} onChange = {(e) => setEmail(e.target.value)} type="email" placeholder="Email" name="email" id="email"/>
                 <label htmlFor="password">Password</label>
-                <input value={password} onChange = {(e) => setPassword(e.target.value)} type="password" placeholder="Password" name="password" id="password"/>    
+                <input required value={password} onChange = {(e) => setPassword(e.target.value)} type="password" placeholder="Password" name="password" id="password"/>    
                 <button type="submit">Register</button>
                 <div className="signup__google">
                     <button onClick={handleGoogleSignUp}>Sign Up with Google</button>
