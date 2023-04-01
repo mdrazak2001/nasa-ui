@@ -28,6 +28,7 @@ export const Register = (props) => {
             localStorage.setItem('authToken', authToken); // store the token in local storage
             props.setname(data.user.name);
             // props.onLoginSwitch();
+            navigate('/');
             toast.success("Successfully Registered! Now Login.", {
               toastId: 'success2',
             })
@@ -38,7 +39,7 @@ export const Register = (props) => {
               toastId: 'failure2',
            })
           });
-          navigate('/');
+          
       };
     const handleGoogleSignUp = (e) => {
       window.location.href = "https://nasa-server.onrender.com/auth/google/register";
