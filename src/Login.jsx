@@ -24,8 +24,8 @@ export const Login = (props) => {
             // console.log(data.user.name);
             const authToken = data.token;
             localStorage.setItem('authToken', authToken); // store the token in local storage
-            props.onLoginSwitch();
             props.setname(data.user.name);
+            props.onLoginSwitch();
           })
           .catch((error) => {
             console.error("Enter valid credentials");

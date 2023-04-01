@@ -21,8 +21,8 @@ export const Register = (props) => {
             console.log(data);
             const authToken = data.token; // assuming the token is returned in the 'token' field
             localStorage.setItem('authToken', authToken); // store the token in local storage
+            props.setname(data.user.name);
             props.onLoginSwitch();
-            // handle success or error response
           })
           .catch((error) => {
             console.error('User with same email already exists');
