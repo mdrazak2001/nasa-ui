@@ -23,7 +23,8 @@ export const Register = (props) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data);
+            console.log(data);
+            console.log(data.user.name);
             const authToken = data.token; // assuming the token is returned in the 'token' field
             localStorage.setItem('authToken', authToken); // store the token in local storage
             props.setname(data.user.name);
