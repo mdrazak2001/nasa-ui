@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export const Home = (props) => {
-    const [imageUrl, setImageUrl] = useState('');
     const [imageData, setImageData] = useState({});
     const handleLogout = (e) => {
         e.preventDefault();
@@ -18,7 +15,7 @@ export const Home = (props) => {
     };
     const fetchImage = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/image');
+            const response = await axios.get('https://nasa-server.onrender.com/api/image');
             setImageData(response.data);
           } catch (error) {
             console.log(error);

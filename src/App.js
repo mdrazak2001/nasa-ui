@@ -6,7 +6,6 @@ import { Home } from './Home';
 import { BrowserRouter, useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
 
 function App() {
   const location = useLocation();
@@ -14,7 +13,6 @@ function App() {
   const [currentForm, setCurrentForm] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState('');
-  const [image, setImage] = useState({});
 
   useEffect(() => {
     
@@ -56,7 +54,7 @@ function App() {
   function handleLogout() {
     localStorage.removeItem('authToken');
     setIsLoggedIn(false);
-    window.location.href = "http://localhost:3000";
+    window.location.href = "https://nasa-ui.vercel.app/";
   }
 
   return (

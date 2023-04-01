@@ -11,7 +11,7 @@ export const Register = (props) => {
         event.preventDefault();
         const formData = { name, email, password };
         // console.log(formData);
-        fetch('http://localhost:5000/registerUser', {
+        fetch('https://nasa-server.onrender.com/registerUser', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData),
@@ -29,7 +29,7 @@ export const Register = (props) => {
           });
       };
     const handleGoogleSignUp = (e) => {
-      window.location.href = "http://localhost:5000/auth/google/register";
+      window.location.href = "https://nasa-server.onrender.com/auth/google/register";
     };
 
     return (
