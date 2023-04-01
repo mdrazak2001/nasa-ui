@@ -30,12 +30,15 @@ export const Register = (props) => {
             // props.onLoginSwitch();
             toast.success("Successfully Registered! Now Login.", {
               toastId: 'success2',
-            });
-            navigate('/');
+            })
+            
           })
           .catch((error) => {
-            console.error('User with same email already exists');
+            toast.error("This Email Alredy exists!", {
+              toastId: 'failure2',
+           })
           });
+          navigate('/');
       };
     const handleGoogleSignUp = (e) => {
       window.location.href = "https://nasa-server.onrender.com/auth/google/register";
