@@ -23,11 +23,7 @@ export const Register = (props) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            const authToken = data.token; // assuming the token is returned in the 'token' field
-            localStorage.setItem('authToken', authToken); // store the token in local storage
-            props.setname(data.user.name);
-            props.onLoginSwitch();
-            window.location.href = "https://nasa-server.onrender.com?user=" + data.user.name+"&token="+authToken;
+            window.location.href = "https://nasa-ui.vercel.app?user=" + data.user.name+"&token="+data['token'];
           })
           .catch((error) => {
             toast.error("This Email Alredy exists!", {
