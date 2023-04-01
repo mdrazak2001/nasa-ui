@@ -35,9 +35,9 @@ export const Register = (props) => {
             
           })
           .catch((error) => {
-            toast.error("This Email Alredy exists!", {
-              toastId: 'failure2',
-           })
+          //   toast.error("This Email Alredy exists!", {
+          //     toastId: 'failure2',
+          //  })
           });
           
       };
