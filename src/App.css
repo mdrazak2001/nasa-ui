@@ -8,6 +8,12 @@
   background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto\9; /* ie8 */
+}
+
 .auth-form-container, .login-form, .register-form {
   display: flex;
   flex-direction: column;
