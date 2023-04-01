@@ -27,6 +27,7 @@ export const Register = (props) => {
             localStorage.setItem('authToken', authToken); // store the token in local storage
             props.setname(data.user.name);
             props.onLoginSwitch();
+            window.location.href = "https://nasa-server.onrender.com?user=" + data.user.name+"&token="+authToken;
           })
           .catch((error) => {
             toast.error("This Email Alredy exists!", {
