@@ -2,10 +2,14 @@ import React, {useState} from "react";
 import { GoogleLoginButton  } from "react-social-login-buttons";
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Register = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -18,11 +22,15 @@ export const Register = (props) => {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             const authToken = data.token; // assuming the token is returned in the 'token' field
             localStorage.setItem('authToken', authToken); // store the token in local storage
             props.setname(data.user.name);
-            props.onLoginSwitch();
+            // props.onLoginSwitch();
+            toast.success("Successfully Registered! Now Login.", {
+              toastId: 'success2',
+            });
+            navigate('/');
           })
           .catch((error) => {
             console.error('User with same email already exists');
